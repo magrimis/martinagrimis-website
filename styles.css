@@ -472,19 +472,16 @@ a {
 
 /* ===== Contact ===== */
 .section-contact {
-  background-color: var(--navy);
-  color: #fff;
   text-align: center;
 }
 
 .section-contact .section-title {
-  color: #fff;
   justify-content: center;
 }
 
 .contact-lead {
   font-size: 1.2rem;
-  color: #c4d0de;
+  color: var(--muted);
   max-width: 540px;
   margin: 0 auto 2.5rem;
 }
@@ -499,14 +496,33 @@ a {
 .contact-link {
   font-size: 1.1rem;
   font-weight: 500;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
   padding-bottom: 2px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .contact-link:hover {
-  border-color: #fff;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-reveal {
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.5rem 1.4rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-reveal:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ===== Footer ===== */

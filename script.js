@@ -18,6 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Click-to-reveal email (the full address is never present in the HTML)
+  const emailReveal = document.getElementById("email-reveal");
+  if (emailReveal) {
+    emailReveal.addEventListener("click", () => {
+      const address = emailReveal.dataset.user + "@" + emailReveal.dataset.domain;
+      const link = document.createElement("a");
+      link.href = "mailto:" + address;
+      link.className = "contact-link";
+      link.textContent = address;
+      emailReveal.replaceWith(link);
+    });
+  }
+
   // Mobile nav toggle
   const toggle = document.getElementById("nav-toggle");
   const links = document.getElementById("nav-links");
