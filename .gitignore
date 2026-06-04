@@ -1,0 +1,5 @@
+# Local-only project notes — contains private contact info, must NOT be deployed/published
+PROJECT_REFERENCE.md
+
+# Local Claude Code config
+.claude/
