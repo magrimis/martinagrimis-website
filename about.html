@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Martin Agrimis — Experience &amp; Background</title>
+  <title>Martin Agrimis</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
   <meta name="description" content="Experience, transactions, education, and skills of Martin Agrimis — investment banker covering energy, power, and digital infrastructure." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -65,7 +66,24 @@
               associates across deal teams.
             </p>
           </div>
-          <img src="Dec%202023%20Headshot.jpg" alt="Martin Agrimis" class="about-photo" />
+          <!--
+            High-res master (Dec 2023 Headshot.jpg, 5760px) is optimized on the fly by
+            Cloudflare Image Transformations (format=auto -> AVIF/WebP, per-width resize).
+            Requires Transformations enabled on the custom domain; otherwise onerror falls
+            back to the static 60 KB headshot.jpg (also used for local preview / pages.dev).
+          -->
+          <img
+            class="about-photo"
+            alt="Martin Agrimis"
+            width="1280" height="853"
+            src="headshot.jpg"
+            srcset="/cdn-cgi/image/width=640,format=auto,quality=82/Dec%202023%20Headshot.jpg 640w,
+                    /cdn-cgi/image/width=960,format=auto,quality=82/Dec%202023%20Headshot.jpg 960w,
+                    /cdn-cgi/image/width=1280,format=auto,quality=82/Dec%202023%20Headshot.jpg 1280w,
+                    /cdn-cgi/image/width=1600,format=auto,quality=82/Dec%202023%20Headshot.jpg 1600w"
+            sizes="(max-width: 720px) 240px, 360px"
+            onerror="this.onerror=null; this.srcset=''; this.src='headshot.jpg';"
+          />
         </div>
       </div>
     </section>

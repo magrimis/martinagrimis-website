@@ -569,7 +569,7 @@ a {
     align-items: flex-start;
     gap: 1.25rem;
     padding: 1.5rem 2rem;
-    background-color: #fff;
+    background-color: var(--bg);
     border-bottom: 1px solid var(--line);
     transform: translateY(-150%);
     transition: transform 0.3s ease;
