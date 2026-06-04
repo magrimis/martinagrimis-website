@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <title>Martin Agrimis</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
   <meta name="description" content="Martin Agrimis — investment banker covering energy, power, and digital infrastructure across European and North American markets." />
@@ -16,6 +17,8 @@
       var saved = localStorage.getItem("theme");
       var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
       document.documentElement.setAttribute("data-theme", theme);
+      var m = document.getElementById("theme-color-meta");
+      if (m) m.setAttribute("content", theme === "dark" ? "#0d1117" : "#ffffff");
     })();
   </script>
 </head>

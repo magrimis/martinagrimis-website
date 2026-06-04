@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const next = current === "dark" ? "light" : "dark";
       document.documentElement.setAttribute("data-theme", next);
       localStorage.setItem("theme", next);
+      const meta = document.getElementById("theme-color-meta");
+      if (meta) meta.setAttribute("content", next === "dark" ? "#0d1117" : "#ffffff");
     });
   }
 
