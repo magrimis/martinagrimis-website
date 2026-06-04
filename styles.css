@@ -344,13 +344,26 @@ a {
   margin-bottom: 0;
 }
 
-.about-photo {
-  flex: 0 0 auto;
+/* A div stretches reliably to the text height in flex (an <img> does not),
+   so the frame sets the size and the image fills it via object-fit. */
+.about-photo-frame {
+  flex: 0 0 320px;
   align-self: stretch;
-  width: 320px;
-  object-fit: cover;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
   border-radius: 12px;
   border: 1px solid var(--line);
+}
+
+.about-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
 }
 
 /* ===== Experience / Timeline ===== */
@@ -597,10 +610,49 @@ a {
     gap: 1.5rem;
   }
 
-  .about-photo {
-    align-self: flex-start;
-    width: 220px;
-    max-width: 100%;
-    height: auto;
+  /* Full-width headshot above the text on mobile */
+  .about-photo-frame {
+    flex: none;
+    width: 100%;
+    align-self: stretch;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Collapsible deal groups — mobile only */
+  .deal-group-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+    margin: 1rem 0 0;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .deal-group-label::after {
+    content: "";
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+
+  .deal-group-label.open::after {
+    transform: rotate(-135deg);
+  }
+
+  .deals {
+    display: none;
+    padding-top: 0.85rem;
+  }
+
+  .deals.open {
+    display: grid;
   }
 }

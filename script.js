@@ -51,4 +51,29 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Collapsible deal groups. Listeners attach everywhere, but the collapse only
+  // takes visual effect on mobile (CSS hides .deals under 720px unless .open).
+  document.querySelectorAll(".deal-group-label").forEach((label) => {
+    const list = label.nextElementSibling;
+    if (!list || !list.classList.contains("deals")) return;
+
+    label.setAttribute("role", "button");
+    label.setAttribute("tabindex", "0");
+    label.setAttribute("aria-expanded", "false");
+
+    const toggleGroup = () => {
+      const open = label.classList.toggle("open");
+      list.classList.toggle("open", open);
+      label.setAttribute("aria-expanded", String(open));
+    };
+
+    label.addEventListener("click", toggleGroup);
+    label.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleGroup();
+      }
+    });
+  });
 });
