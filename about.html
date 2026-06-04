@@ -96,9 +96,10 @@
           </div>
           <!--
             High-res master (Dec 2023 Headshot.jpg, 5760px) is optimized on the fly by
-            Cloudflare Image Transformations (format=auto -> AVIF/WebP, per-width resize).
-            Requires Transformations enabled on the custom domain; otherwise onerror falls
-            back to the static 60 KB headshot.jpg (also used for local preview / pages.dev).
+            Cloudflare Image Transformations (format=auto -> AVIF/WebP, per-width resize,
+            quality=90, sharpen=1). sizes="620px" matches actual ~620px desktop column width
+            so 2x HiDPI displays pick 1280w (not 960w). Requires Transformations enabled on
+            the custom domain; onerror falls back to headshot.jpg for local / pages.dev.
             The frame div handles equal-height layout; the img fills it via object-fit.
           -->
           <div class="about-photo-frame">
@@ -107,11 +108,12 @@
               alt="Martin Agrimis"
               width="1280" height="853"
               src="headshot.jpg"
-              srcset="/cdn-cgi/image/width=640,format=auto,quality=82/Dec%202023%20Headshot.jpg 640w,
-                      /cdn-cgi/image/width=960,format=auto,quality=82/Dec%202023%20Headshot.jpg 960w,
-                      /cdn-cgi/image/width=1280,format=auto,quality=82/Dec%202023%20Headshot.jpg 1280w,
-                      /cdn-cgi/image/width=1600,format=auto,quality=82/Dec%202023%20Headshot.jpg 1600w"
-              sizes="(max-width: 720px) 100vw, 440px"
+              srcset="/cdn-cgi/image/width=640,format=auto,quality=90,sharpen=1/Dec%202023%20Headshot.jpg 640w,
+                      /cdn-cgi/image/width=960,format=auto,quality=90,sharpen=1/Dec%202023%20Headshot.jpg 960w,
+                      /cdn-cgi/image/width=1280,format=auto,quality=90,sharpen=1/Dec%202023%20Headshot.jpg 1280w,
+                      /cdn-cgi/image/width=1600,format=auto,quality=90,sharpen=1/Dec%202023%20Headshot.jpg 1600w,
+                      /cdn-cgi/image/width=1920,format=auto,quality=90,sharpen=1/Dec%202023%20Headshot.jpg 1920w"
+              sizes="(max-width: 720px) 100vw, 620px"
               onerror="this.onerror=null; this.srcset=''; this.src='headshot.jpg';"
             />
           </div>
