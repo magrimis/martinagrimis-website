@@ -3,3 +3,6 @@ PROJECT_REFERENCE.md
 
 # Local Claude Code config
 .claude/
+
+# OG image generation utility (local only)
+gen_og_image.py
