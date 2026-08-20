@@ -1,8 +1,52 @@
-# Local-only project notes — contains private contact info, must NOT be deployed/published
-PROJECT_REFERENCE.md
+# ═══════════════════════════════════════════════════════════════════════════
+#  THIS FILE IS AN ALLOW-LIST. IT FAILS CLOSED.
+#
+#  The `*` on the first rule below ignores EVERYTHING in this folder. Only the
+#  files named with a leading `!` are visible to git and can be published.
+#
+#  WHY: the GitHub repo is public and Cloudflare Pages serves the repo root, so
+#  a push publishes twice. Under the old "block-list" rule, anything dropped in
+#  this folder was publishable by default — and twice it nearly was. On
+#  2026-08-20 `git add -A --dry-run .` would have staged a Chase account
+#  statement and a git bundle containing a redacted phone number.
+#  See HANDOFF_CONTEXT.md §1.1.
+#
+#  ── IF YOU ADD A NEW FILE TO THE WEBSITE, ADD IT BELOW ──
+#  Otherwise git will not see it, and it will silently not deploy. You will
+#  notice because the page 404s. That is the intended trade: a missing page is
+#  a 30-second fix, a published bank statement is permanent.
+#
+#  Already-tracked files are unaffected by any of this — editing index.html
+#  behaves exactly as it always has.
+#
+#  Check any time with:   git check-ignore -v <filename>
+#  Check before staging:  git add -A --dry-run .
+# ═══════════════════════════════════════════════════════════════════════════
 
-# Local Claude Code config
-.claude/
+# 1. Ignore everything.
+*
 
-# OG image generation utility (local only)
-gen_og_image.py
+# 2. Un-ignore the files that ARE the website.
+!.gitignore
+!_headers
+!index.html
+!about.html
+!styles.css
+!script.js
+!headshot.jpg
+!og-image.jpg
+!Dec 2023 Headshot.jpg
+
+# ── Deliberately NOT listed above, and therefore never published ────────────
+#   PROJECT_REFERENCE.md          the build record (held a phone number once)
+#   README.md  PLAN.md  RELOAD_PROMPT.md  HANDOFF_CONTEXT.md
+#   SESSION_LOG_*.md              the handoff kit — internal planning
+#   WORKFLOW_EXPLAINED.html       plain-English explainer
+#   gen_og_image.py               local utility, needs Windows fonts
+#   .claude/                      local Claude Code config
+#   *.bundle                      git backups — pre-scrub history, phone number
+#   anything else that lands here — statements, screenshots, drafts, downloads
+#
+# NOTE: because rule 1 ignores everything, `git status` will NOT list new
+# untracked files. That is the point. It also means git status is no longer a
+# way to notice a stray file — use File Explorer for that.

@@ -571,6 +571,14 @@ a {
 
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
+  /* Hero eyebrow reads just "London" on phones. The full line
+     ("London · covering Europe & North America") measures ~400px at this size
+     and letter-spacing, while the widest phone text column is ~342px — so it
+     wrapped to two ragged lines on every handset. Desktop fits it on one line. */
+  .eyebrow-coverage {
+    display: none;
+  }
+
   .nav-toggle {
     display: flex;
   }

@@ -1,0 +1,50 @@
+# Cloudflare Pages reads this file from the site root and applies these response
+# headers. No build step, no tooling — Pages parses it directly.
+# Syntax: a URL pattern on its own line, then indented "Header: value" lines.
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Added 2026-08-20. Nothing here changes how the site looks or behaves; these
+# are instructions to the browser about how to treat the page.
+#
+# All commentary is kept OUTSIDE the rule block below: Cloudflare documents `#`
+# comments on their own lines, but does not document them inside a block, and a
+# live site is the wrong place to find out.
+#
+# What each header does:
+#
+#   X-Content-Type-Options: nosniff
+#     Don't guess a file's type from its contents — trust the declared type.
+#     Stops a file being treated as a script when it isn't.
+#
+#   X-Frame-Options: DENY
+#     Don't let another site load these pages inside a frame on their own
+#     domain. Prevents the site being wrapped and passed off as something else.
+#
+#   Referrer-Policy: strict-origin-when-cross-origin
+#     When a visitor clicks away, send only the domain as the referrer, not the
+#     full path — and send nothing at all when downgrading to http.
+#
+#   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+#     This site asks for none of these. Deny them explicitly so nothing embedded
+#     or injected can either.
+#
+# Deliberately NOT set:
+#
+#   Content-Security-Policy
+#     Would need 'unsafe-inline' anyway: about.html uses an inline onerror
+#     handler on the headshot (the fallback for when Cloudflare's image resizing
+#     isn't available), and both pages run an inline <head> script to set the
+#     theme before paint. A CSP permissive enough to allow those buys little,
+#     and a stricter one silently breaks the image fallback and flashes the
+#     wrong theme. Revisit only with a *.pages.dev preview to test against.
+#
+#   Strict-Transport-Security
+#     Set this in the Cloudflare dashboard (SSL/TLS → Edge Certificates → HSTS),
+#     not here. Browsers cache HSTS for its full max-age, so a mistake is hard
+#     to undo; the dashboard keeps it reversible.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
